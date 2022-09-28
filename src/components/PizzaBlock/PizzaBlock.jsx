@@ -18,16 +18,16 @@ const PizzaBlock = ({ title, price, imageUrl, sizes, types, isLoading }) => {
             {isLoading ? (
                 <ContentLoader
                     speed={2}
-                    width={155}
-                    height={250}
-                    viewBox="0 0 155 265"
+                    width={280}
+                    height={500}
+                    viewBox="0 0 280 500"
                     backgroundColor="#f3f3f3"
                     foregroundColor="#ecebeb">
-                    <rect x="1" y="0" rx="10" ry="10" width="155" height="155" />
-                    <rect x="0" y="167" rx="5" ry="5" width="155" height="15" />
-                    <rect x="0" y="187" rx="5" ry="5" width="100" height="15" />
-                    <rect x="1" y="234" rx="5" ry="5" width="80" height="25" />
-                    <rect x="124" y="230" rx="10" ry="10" width="32" height="32" />
+                    <circle cx="134" cy="136" r="125" />
+                    <rect x="0" y="279" rx="10" ry="10" width="280" height="23" />
+                    <rect x="0" y="326" rx="10" ry="10" width="280" height="88" />
+                    <rect x="0" y="436" rx="10" ry="10" width="95" height="30" />
+                    <rect x="125" y="427" rx="24" ry="24" width="152" height="45" />
                 </ContentLoader>
             ) : (
                 <>
