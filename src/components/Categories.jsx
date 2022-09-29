@@ -1,8 +1,6 @@
 import React from 'react'
 
-const Categories = () => {
-
-    const [activeIndex, setActiveIndex] = React.useState(0);
+const Categories = ({ value, onChangeCategory }) => {
 
     const categories = [
         'Все',
@@ -16,8 +14,8 @@ const Categories = () => {
     return (
         <div className="categories">
             <ul>
-                {categories.map((value, id) => (
-                    <li key={id} onClick={() => setActiveIndex(id)} className={activeIndex === id ? 'active' : ''}>{value}</li>
+                {categories.map((categoryName, i) => (
+                    <li key={i} onClick={() => onChangeCategory(i)} className={value === i ? 'active' : ''}>{categoryName}</li>
                 ))}
             </ul>
         </div>
