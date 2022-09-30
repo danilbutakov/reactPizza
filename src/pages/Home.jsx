@@ -20,9 +20,12 @@ const Home = () => {
         async function fetchData() {
             try {
                 setIsLoading(true);
-                const [itemsResponse] = await Promise.all([
-                    axios.get(`https://63343f9f433198e79dd3b5ea.mockapi.io/items?${categoryID > 0 ? `category=${categoryID}` : ''}&sortBy=${sortType.sortProperty}&order=desc`),
-                ]);
+
+                const sortBy = sortType.sortProperty.replace('-', '');
+                const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
+                const category = categoryID > 0 ? `category=${categoryID}` : '';
+
+                const itemsResponse = await axios.get(`https://63343f9f433198e79dd3b5ea.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}`);
 
                 setIsLoading(false);
                 setItems(itemsResponse.data);
