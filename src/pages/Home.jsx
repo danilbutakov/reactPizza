@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { setCategoryId } from '../redux/slices/filterSlice';
 import Categories from '../components/Categories'
 import PizzaBlock from '../components/PizzaBlock/Index'
 import Sort from '../components/Sort/Sort'
@@ -10,14 +12,16 @@ import Pagination from '../components/Pagination/Index';
 
 const Home = () => {
 
+    const dispatch = useDispatch();
+    const { categoryId, sort } = useSelector((state) => state.filter);
+
     const [items, setItems] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
-    const [categoryID, setCategoryID] = React.useState(0);
     const [currentPage, setCurrentPage] = React.useState(1);
-    const [sortType, setSortType] = React.useState({
-        name: 'популярности',
-        sortProperty: 'rating'
-    });
+
+    const onChangeCategory = (id) => {
+        dispatch(setCategoryId(id));
+    }
 
     const { searchValue } = React.useContext(AppContext);
 
@@ -26,9 +30,9 @@ const Home = () => {
             try {
                 setIsLoading(true);
 
-                const sortBy = sortType.sortProperty.replace('-', '');
-                const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
-                const category = categoryID > 0 ? `category=${categoryID}` : '';
+                const sortBy = sort.sortProperty.replace('-', '');
+                const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+                const category = categoryId > 0 ? `category=${categoryId}` : '';
                 const search = searchValue ? `&search=${searchValue}` : '';
 
                 const itemsResponse = await axios.get(`https://63343f9f433198e79dd3b5ea.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`);
@@ -42,7 +46,7 @@ const Home = () => {
         }
         fetchData();
         window.scrollTo(0, 0);
-    }, [categoryID, sortType, searchValue, currentPage]);
+    }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
     const pizzas = items.map((obj) => (
         <PizzaBlock
@@ -55,8 +59,8 @@ const Home = () => {
     return (
         <div className='container'>
             <div className="content__top">
-                <Categories value={categoryID} onChangeCategory={(i) => setCategoryID(i)} />
-                <Sort value={sortType} onChangeSort={(i) => setSortType(i)} />
+                <Categories value={categoryId} onChangeCategory={onChangeCategory} />
+                <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">

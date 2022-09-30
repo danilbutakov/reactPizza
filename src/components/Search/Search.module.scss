@@ -1,7 +1,9 @@
-
 .root {
     position: relative;
-    left: -120px;
+
+    @media(max-width: 900px) {
+        // top: 85px;
+    }
 }
 
 .input {
@@ -12,9 +14,30 @@
     font-size: 18px;
     padding-left: 42px;
     transition: all 0.2s ease-in-out;
+
     &:focus {
-    border: 2px solid rgba(0, 0, 0, 0.4);
-    width: 450px;
+        border: 2px solid rgba(0, 0, 0, 0.4);
+        width: 450px;
+    }
+
+    @media(max-width: 1155px) {
+        width: 200px;
+
+        &:focus {
+            width: 300px;
+        }
+    }
+
+    @media(max-width: 987px) {
+        width: 200px;
+
+        &:focus {
+            width: 200px;
+        }
+    }
+
+    @media(max-width: 900px) {
+        // width: 300px;
     }
 }
 
