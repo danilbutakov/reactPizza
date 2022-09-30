@@ -1,4 +1,5 @@
 import React from "react";
+import AppContext from "./context";
 
 import Header from "./components/Header";
 import './scss/app.scss';
@@ -8,22 +9,27 @@ import Empty from "./pages/Empty";
 import Cart from "./pages/Cart";
 
 function App() {
+
+    const [searchValue, setSearchValue] = React.useState('');
+
     return (
         <div className="wrapper">
-            <Header />
-            <div className="content">
-                <Routes>
-                    <Route path='/' element={
-                        <Home />
-                    } />
-                    <Route path='/cart' element={
-                        <Cart />
-                    } />
-                    <Route path='*' element={
-                        <Empty />
-                    } />
-                </Routes>
-            </div>
+            <AppContext.Provider value={{ searchValue, setSearchValue }}>
+                <Header />
+                <div className="content">
+                    <Routes>
+                        <Route path='/' element={
+                            <Home />
+                        } />
+                        <Route path='/cart' element={
+                            <Cart />
+                        } />
+                        <Route path='*' element={
+                            <Empty />
+                        } />
+                    </Routes>
+                </div>
+            </AppContext.Provider>
         </div>
     );
 }
