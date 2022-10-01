@@ -17,27 +17,14 @@
 
     &:focus {
         border: 2px solid rgba(0, 0, 0, 0.4);
-        width: 450px;
     }
 
     @media(max-width: 1155px) {
         width: 200px;
-
-        &:focus {
-            width: 300px;
-        }
     }
 
     @media(max-width: 987px) {
         width: 200px;
-
-        &:focus {
-            width: 200px;
-        }
-    }
-
-    @media(max-width: 900px) {
-        // width: 300px;
     }
 }
 
