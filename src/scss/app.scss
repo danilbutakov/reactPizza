@@ -34,6 +34,22 @@ body {
     padding: 15px 0;
   }
 
+  &__error-info {
+    width: 500px;
+    text-align: center;
+    margin: 100px auto;
+
+    h2 {
+      font-size: 35px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+
   &__title {
     margin: 35px 0;
   }
