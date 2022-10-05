@@ -21,8 +21,8 @@
         }
     }
 
-    @media(max-width: 900px) {
-        
+    @media(max-width: 500px) {
+        flex-wrap: wrap;
     }
   }
 
@@ -43,6 +43,16 @@
 
     p {
       color: #7b7b7b;
+    }
+  }
+
+  &__cart {
+    @media(min-width: 491px) {
+        margin-left: 10px;
+    }
+
+    @media (max-width: 480px) {
+        margin: 40px auto 0px auto;
     }
   }
 }
