@@ -19,6 +19,7 @@
 .idea/
 /.idea/
 /.idea
+.idea
 
 npm-debug.log*
 yarn-debug.log*
