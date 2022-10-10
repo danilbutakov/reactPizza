@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/core": "^4.3.0",
+    "@capacitor/android": "^4.3.0",
+    "@capacitor/ios": "^4.3.0",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -45,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/cli": "^4.3.0",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "eslint": "^8.24.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
