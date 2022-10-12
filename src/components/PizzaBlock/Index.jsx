@@ -1,10 +1,11 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { addItem } from '../../redux/slices/cartSlice';
 
-const typeNames = ['тонкое', 'традиционное'];
+export const typeNames = ['тонкое', 'традиционное'];
 
 const PizzaBlock = ({
 	id,
@@ -49,30 +50,9 @@ const PizzaBlock = ({
 						backgroundColor='#f3f3f3'
 						foregroundColor='#ecebeb'>
 						<circle cx='134' cy='136' r='125' />
-						<rect
-							x='0'
-							y='279'
-							rx='10'
-							ry='10'
-							width='280'
-							height='23'
-						/>
-						<rect
-							x='0'
-							y='326'
-							rx='10'
-							ry='10'
-							width='280'
-							height='88'
-						/>
-						<rect
-							x='0'
-							y='436'
-							rx='10'
-							ry='10'
-							width='95'
-							height='30'
-						/>
+						<rect x='0' y='279' rx='10' ry='10' width='280' height='23' />
+						<rect x='0' y='326' rx='10' ry='10' width='280' height='88' />
+						<rect x='0' y='436' rx='10' ry='10' width='95' height='30' />
 						<rect
 							x='125'
 							y='427'
@@ -84,11 +64,13 @@ const PizzaBlock = ({
 					</ContentLoader>
 				) : (
 					<>
-						<img
-							className='pizza-block__image'
-							src={imageUrl}
-							alt='Pizza'
-						/>
+						<Link to={`/pizza/${id}`}>
+							<img
+								className='pizza-block__image'
+								src={imageUrl}
+								alt='Pizza'
+							/>
+						</Link>
 						<h4 className='pizza-block__title'>{title}</h4>
 						<div className='pizza-block__selector'>
 							<ul>
@@ -96,11 +78,7 @@ const PizzaBlock = ({
 									<li
 										key={typeID}
 										onClick={() => setActiveType(typeID)}
-										className={
-											activeType === typeID
-												? 'active'
-												: ''
-										}>
+										className={activeType === typeID ? 'active' : ''}>
 										{typeNames[typeID]}
 									</li>
 								))}
@@ -110,18 +88,14 @@ const PizzaBlock = ({
 									<li
 										key={size}
 										onClick={() => setActiveSize(i)}
-										className={
-											activeSize === i ? 'active' : ''
-										}>
+										className={activeSize === i ? 'active' : ''}>
 										{size} см.
 									</li>
 								))}
 							</ul>
 						</div>
 						<div className='pizza-block__bottom'>
-							<div className='pizza-block__price'>
-								от {price} ₽
-							</div>
+							<div className='pizza-block__price'>от {price} ₽</div>
 							<button
 								onClick={onClickAdd}
 								className='button button--outline button--add'>

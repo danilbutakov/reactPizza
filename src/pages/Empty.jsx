@@ -1,10 +1,8 @@
-import React from 'react'
+import React from 'react';
 import NotFoundBlock from '../components/NotFoundBLock/Index';
 
 const Empty = () => {
-    return (
-        <NotFoundBlock />
-    )
-}
+	return <NotFoundBlock />;
+};
 
 export default Empty;
