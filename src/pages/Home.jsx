@@ -67,7 +67,7 @@ const Home = () => {
 		isMounted.current = true;
 	}, [categoryId, sort.sortProperty, currentPage]);
 
-	// Если был первый рендер, то проверяем URL-параметры и сохраняем в редуксе
+	// Если был первый рендер, то проверяем URL-параметры и сохраняем в редаксе
 	React.useEffect(() => {
 		if (window.location.search) {
 			const params = qs.parse(window.location.search.substring(1));
@@ -99,7 +99,7 @@ const Home = () => {
 
 	const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
-	const skeleton = [...new Array(6)].map((_, index) => (
+	const skeleton = [...new Array(3)].map((_, index) => (
 		<Skeleton key={index} />
 	));
 

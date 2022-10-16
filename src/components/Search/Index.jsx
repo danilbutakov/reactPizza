@@ -50,7 +50,7 @@ const Search = () => {
 				onClick={toggleClass}
 				className={activeSearch ? styles.active : styles.input}
 				type='text'
-				placeholder='Поиск пиццы ....'
+				placeholder='Поиск пиццы ...'
 			/>
 			{value && (
 				<svg

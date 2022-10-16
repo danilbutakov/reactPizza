@@ -6,7 +6,11 @@ import logoSvg from '../assets/img/pizza-logo.svg';
 import Search from './Search/Index';
 
 const Header = () => {
-	const { items, totalPrice } = useSelector((state) => state.cart);
+	const { items } = useSelector((state) => state.cart);
+	const totalPrice = items.reduce(
+		(sum, obj) => obj.price * obj.count + sum,
+		0,
+	);
 	const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 	const location = useLocation();
 	const [headerCart, setHeaderCart] = React.useState(true);
